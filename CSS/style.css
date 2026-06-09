@@ -345,11 +345,26 @@ footer p{
     gap:16px;
 }
 
-.card-footer span{
+.price-info{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.product-price{
     color:var(--gold);
     font-family:'Cinzel',serif;
     font-size:19px;
     white-space:nowrap;
+}
+
+.price-info small{
+    color:var(--muted);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:1.4px;
+    line-height:1.35;
+    text-transform:uppercase;
 }
 
 .add-to-cart{
@@ -620,6 +635,7 @@ body.cart-open .cart-drawer{
     flex-direction:column;
     justify-content:center;
     text-align:center;
+    scroll-margin-top:78px;
 }
 
 .newsletter-text{
@@ -778,4 +794,3 @@ footer{
         flex-direction:column;
     }
 }
-
