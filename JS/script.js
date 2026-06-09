@@ -20,7 +20,20 @@ function loadCart(){
     }
 
     try{
-        return JSON.parse(savedCart);
+        const savedItems = JSON.parse(savedCart);
+
+        if(!Array.isArray(savedItems)){
+            return [];
+        }
+
+        return savedItems.map((item) => {
+            const currentPrice = getVisibleProductPrice(item.name);
+
+            return {
+                ...item,
+                price:currentPrice ?? item.price
+            };
+        });
     }catch(error){
         return [];
     }
@@ -35,6 +48,30 @@ function formatCurrency(value){
         style:'currency',
         currency:'BRL'
     });
+}
+
+function parseCurrency(value){
+    return Number(value.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
+}
+
+function parseProductPrice(card){
+    const priceElement = card.querySelector('.product-price') || card.querySelector('.card-footer span');
+    const priceText = priceElement?.textContent || card.dataset.productPrice || '';
+    const price = parseCurrency(priceText);
+
+    return Number.isFinite(price) ? price : null;
+}
+
+function getVisibleProductPrice(productName){
+    const productCard = Array.from(document.querySelectorAll('.card')).find((card) => {
+        return card.dataset.productName === productName;
+    });
+
+    if(!productCard){
+        return null;
+    }
+
+    return parseProductPrice(productCard);
 }
 
 function openCart(){
@@ -144,9 +181,15 @@ function buildOrderMessage(customer){
 addButtons.forEach((button) => {
     button.addEventListener('click', () => {
         const card = button.closest('.card');
+        const price = parseProductPrice(card);
+
+        if(!card.dataset.productName || price === null){
+            return;
+        }
+
         const product = {
             name:card.dataset.productName,
-            price:Number(card.dataset.productPrice)
+            price
         };
 
         addToCart(product);
