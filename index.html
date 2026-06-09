@@ -27,6 +27,10 @@
         <a class="whatsapp-btn" href="https://wa.me/5551998361451" target="_blank">
             Receber novidades
         </a>
+
+        <button class="cart-toggle" type="button" aria-label="Abrir carrinho">
+            Carrinho <span data-cart-count>0</span>
+        </button>
     </header>
 
     <main>
@@ -83,50 +87,50 @@
             </div>
 
             <div class="product-grid">
-                <article class="card">
+                <article class="card" data-product-name="Khamrah Qahwa" data-product-price="249.90">
                     <img src="IMG/perfume1.webp" alt="Perfume Khamrah Qahwa">
                     <div class="card-body">
                         <h3>Khamrah Qahwa</h3>
                         <p>Luxo árabe com assinatura intensa, quente e viciante.</p>
                         <div class="card-footer">
-                            <span>R$ 249,90</span>
-                            <a href="https://wa.me/5551998361451" target="_blank">Consultar</a>
+                            <span>R$384,73</span>
+                            <button class="add-to-cart" type="button">Adicionar</button>
                         </div>
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" data-product-name="Yara Tous Lattafa" data-product-price="299.90">
                     <img src="IMG/perfume2.avif" alt="Perfume Yara Tous Lattafa">
                     <div class="card-body">
-                        <h3>Yara Tous Lattafa</h3>
+                        <h3>Yara Moi Lattafa</h3>
                         <p>Fragrância tropical com manga, coco, maracujá, flores e baunilha.</p>
                         <div class="card-footer">
-                            <span>R$ 299,90</span>
-                            <a href="https://wa.me/5551998361451" target="_blank">Consultar</a>
+                            <span>R$ 273,55</span>
+                            <button class="add-to-cart" type="button">Adicionar</button>
                         </div>
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" data-product-name="Asad Black Lattafa" data-product-price="279.90">
                     <img src="IMG/perfume3.webp" alt="Perfume Asad Black Lattafa">
                     <div class="card-body">
                         <h3>Asad Black Lattafa</h3>
                         <p>Intenso, sofisticado e marcante para homens de presença.</p>
                         <div class="card-footer">
-                            <span>R$ 279,90</span>
-                            <a href="https://wa.me/5551998361451" target="_blank">Consultar</a>
+                            <span>R$ 290,19</span>
+                            <button class="add-to-cart" type="button">Adicionar</button>
                         </div>
                     </div>
                 </article>
 
-                <article class="card">
+                <article class="card" data-product-name="Fakhar Rose" data-product-price="329.90">
                     <img src="IMG/perfume4.avif" alt="Perfume Fakhar Rose">
                     <div class="card-body">
                         <h3>Fakhar Rose</h3>
                         <p>Frutas delicadas, flores brancas, rosa, jasmim e fundo cremoso.</p>
                         <div class="card-footer">
-                            <span>R$ 329,90</span>
-                            <a href="https://wa.me/5551998361451" target="_blank">Consultar</a>
+                            <span>R$ 350,96</span>
+                            <button class="add-to-cart" type="button">Adicionar</button>
                         </div>
                     </div>
                 </article>
@@ -175,6 +179,46 @@
             </form>
         </section>
     </main>
+
+    <div class="cart-overlay" data-cart-overlay></div>
+
+    <aside class="cart-drawer" aria-label="Carrinho de compras">
+        <div class="cart-header">
+            <div>
+                <p class="eyebrow">Seu pedido</p>
+                <h2>Carrinho</h2>
+            </div>
+
+            <button class="cart-close" type="button" aria-label="Fechar carrinho">×</button>
+        </div>
+
+        <div class="cart-items" data-cart-items>
+            <p class="empty-cart">Seu carrinho está vazio.</p>
+        </div>
+
+        <div class="cart-summary">
+            <div>
+                <span>Total</span>
+                <strong data-cart-total>R$ 0,00</strong>
+            </div>
+
+            <form class="checkout-form" data-checkout-form>
+                <input type="text" name="name" placeholder="Seu nome" required>
+                <input type="tel" name="phone" placeholder="WhatsApp" required>
+                <select name="payment" required>
+                    <option value="">Forma de pagamento</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Cartão">Cartão</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+                <button type="submit">Finalizar pedido</button>
+            </form>
+
+            <p class="checkout-note">
+                O pedido será enviado para o WhatsApp da Valens para confirmação de estoque, entrega e pagamento.
+            </p>
+        </div>
+    </aside>
 
     <footer>
         <a class="logo" href="#">
